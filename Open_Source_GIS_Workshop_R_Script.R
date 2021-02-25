@@ -23,7 +23,7 @@ install.packages('bcdata')
 install.packages('bcmaps')
 install.packages('rgdal')
 
-setwd('D:\\NCA\\SFU\\E2O_GIS_Workshop\\E2O_GIS_Workshop')
+setwd('D:\\NCA\\SFU\\Open_Source_GIS_Workshop')
 
 library(ggplot2)
 library(ggmap)
@@ -85,7 +85,7 @@ fieldsites_spatial_transformed <- st_transform(fieldsites_spatial, crs = 3005)
 ## Note: my own personal API will be removed below, you can sign up for your own here: 
 ## https://developers.google.com/maps/documentation/javascript/get-api-key
 
-register_google(key = 'AIzaSyDkIIbMKiHgDIt8RXKNA2NHPJqplcRjv4Y')
+register_google(key = '')
 
 ok_basemap <- get_map(location=c(lon = -119.529439, lat = 49.2888044), zoom = 14, 
                       maptype = 'satellite', source = 'google')
@@ -126,6 +126,8 @@ ggsave('RMRM_Locations_Map.png', width = 10, height = 10, units = 'in')
 # sources of data, but lets explore how to add a raster file in first. In this 
 # case we'll be working with a surface temperature model of bodies of 
 # water in the south Okanagan.
+
+setwd('D:\\NCA\\SFU\\Open_Source_GIS_Workshop\\Data_Folder')
 
 vaseux_st <- raster('vaseux_st.tif')
 
@@ -219,7 +221,7 @@ bec <- bec(class = 'sp')
 
 my_aoi <- readOGR('Okanagan_AOI.kml', 'Okanagan_AOI')
 
-writeOGR(my_aoi, dsn="D:\\NCA\\SFU\\GIS_Workshop\\GIS_Data\\my_aoi.geojson", layer="my_aoi", driver="GeoJSON")
+writeOGR(my_aoi, dsn="D:\\NCA\\SFU\\Open_Source_GIS_Workshop\\Data_Folder\\my_aoi.geojson", layer="my_aoi", driver="GeoJSON")
 
 ###
 
